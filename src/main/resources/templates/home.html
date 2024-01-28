@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        body {
+            font-weight: bold;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #welcome-text {
+            font-size: 24px;
+        }
+
+        #enter-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .devops-text {
+            display: none;
+            margin-top: 20px;
+            font-size: 24px;
+        }
+
+        .devops-text h1 {
+            font-size: 36px; /* Adjust the font size as needed */
+        }
+    </style>
+</head>
+<body>
+
+    <div id="welcome-text">Click Here</div>
+
+    <button id="enter-button" onclick="showHomePage()">Enter</button>
+
+    <div class="devops-text">
+        <h1>Welcome to 2024</h1>
+    </div>
+
+    <script>
+        function showHomePage() {
+            document.getElementById('welcome-text').style.display = 'none';
+            document.getElementById('enter-button').style.display = 'none';
+            document.querySelector('.devops-text').style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>

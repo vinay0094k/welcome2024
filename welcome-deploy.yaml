@@ -1,0 +1,27 @@
+#kubectl apply -f nginx-blue-deploy.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: welcome-deploy
+  namespace: blue-green
+  labels:
+    app: welcome
+    environment: blue
+spec:
+  replicas: 1
+  #Here selector, will select which Pods the Deployment manages. 
+  #matchLabels saying that Deployment should manage Pods with labels.
+  #app: nginx and environment: blue
+  selector:
+    matchLabels:
+      app: welcome
+      environment: blue
+  template:
+    metadata:
+      labels:
+        app: welcome
+        environment: blue
+    spec:
+      containers:
+        - name: welcome
+          image: vinay0094k/welcome_imagejan09c

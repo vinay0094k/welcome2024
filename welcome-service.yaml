@@ -1,0 +1,18 @@
+#kubectl apply -f nginx-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: welcome-service
+  namespace: blue-green
+  labels:
+    environment: welcome
+spec:
+  selector:
+    app: welcome
+    environment: blue
+  ports:
+    - protocol: TCP
+      port: 8024
+      targetPort: 8024 #8020 in greeting-lb service
+      #here the service endpoint will become 10.244.0.91:80
+  type: NodePort
