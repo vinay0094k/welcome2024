@@ -1,6 +1,12 @@
 #dockerfile welcome
 FROM alpine:latest
-RUN apk update && apk --no-cache add curl && apk --no-cache add openjdk11 && adduser welcome --disabled-password && mkdir -p /opt/app/ && chown -R welcome:welcome /opt/app/
+RUN apk --no-cache add --no-progress --virtual .build-deps your-package && \
+    apk del .build-deps && \
+    apk update && \
+    apk --no-cache add curl openjdk11 && \
+    adduser welcome --disabled-password && \
+    mkdir -p /opt/app/ && \
+    chown -R welcome:welcome /opt/app/
 COPY /target/welcome-1.0.0.jar /opt/app/welcome.jar
 COPY application.properties /opt/app/application.properties
 #ADD html /opt/app/html
