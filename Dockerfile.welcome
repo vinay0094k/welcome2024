@@ -1,0 +1,32 @@
+#dockerfile welcome
+ARG env
+FROM alpine:latest
+RUN addgroup -S welcome && adduser -S welcome -G welcome 
+#&& apk update && apk add openjdk11 curl
+# -S option with adduser, doesn't have a password and can't be used for interactive login, it reduces the risk of unauthorized access to the container.
+#by default using addgroup & adduser provides the username access
+
+
+EXPOSE 8024    
+
+#--disabled-password 
+#HEALTHCHECK --interval=120s --timeout=60s --retries=3 \
+#  CMD curl --fail http://localhost:8020/actuator/health || exit 1
+
+USER welcome
+#WORKDIR /opt/app/
+RUN if [ "$env" = "dev" ]; then \
+        WORKDIR /opt/dev; \
+    elif [ "$env" = "prod" ]; then \
+        WORKDIR /opt/prod; \
+    else \
+        echo "Mention correct argument"; \
+    fi
+#RUN chown -R welcome:welcome /opt/app/
+
+#ADD html /opt/app/html
+#by default using COPY instruction provides root root, even if we use chown -R user user <DIR> also
+#COPY --chown=welcome:welcome /target/welcome-1.0.0.jar /opt/app/welcome.jar
+#COPY --chown=welcome:welcome application.properties /opt/app/application.properties
+
+#ENTRYPOINT ["java", "-Duser.timezone=IST", "-Dserver.port=8024", "-Dspring.config.location=/opt/app/application.properties", "-jar", "welcome.jar"]

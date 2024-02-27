@@ -1,0 +1,7 @@
+/home/raghav/Documents/java_project/welcome2024/src/main/java/com/isw/welcome/WelcomeApplication.java
+/home/raghav/Documents/java_project/welcome2024/src/main/java/com/isw/welcome/controller/WelcomeController.java
+/home/raghav/Documents/java_project/welcome2024/src/main/java/com/isw/welcome/controller/WelcomeErrorController.java
+/home/raghav/Documents/java_project/welcome2024/src/main/java/com/isw/welcome/entity/Welcome.java
+/home/raghav/Documents/java_project/welcome2024/src/main/java/com/isw/welcome/repository/WelcomeRepository.java
+/home/raghav/Documents/java_project/welcome2024/src/main/java/com/isw/welcome/service/WelcomeReadiness.java
+/home/raghav/Documents/java_project/welcome2024/src/main/java/com/isw/welcome/service/WelcomeService.java

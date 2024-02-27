@@ -16,4 +16,3 @@ public class WelcomeController {
         return "welcome";    // execute(welcome.html)
     }    
 }
-

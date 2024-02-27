@@ -1,0 +1,11 @@
+FROM maven AS build
+WORKDIR /opt/app
+COPY pom.xml /opt/app/
+RUN mvn dependency:resolve
+COPY src /opt/app/src/
+RUN mvn package
+
+FROM openjdk:11
+EXPOSE 8024
+WORKDIR /opt/app
+COPY --from=build /opt/app/target/welcome-1.0.0.jar welcome.jar
